@@ -1,91 +1,45 @@
-Zestia
-Zestia is a full website project. It is a responsive restaurant website which provides online services related to a restaurant.
+# 🍽️ Zestia
 
-Key Features
-🍪 Good Template for a restaurant website
+A fully responsive restaurant website project providing comprehensive online services for restaurants.
 
-🍪 Main pages: Home, About, Services, Our Menu, Contact, Dashboard, Register/Login
+## ✨ Key Features
 
-🍪 Register/Login: Forgot password, Mail sending etc.
+- 🍪 **Professional Restaurant Template** - Ready-to-use design for restaurant websites
+- 📄 **Main Pages** - Home, About, Services, Our Menu, Contact, Dashboard, Register/Login
+- 🔐 **User Authentication** - Secure login with forgot password and email notifications
+- 🛒 **Food Ordering System** - Add to cart, checkout, quantity management
+- 🪑 **Table Booking** - Standard and VIP reservation options with booking management
+- 👑 **VIP Membership** - Special discounts for VIP members
+- 📑 **Bill Generation** - PDF bill printing with automatic VIP discounts
+- 📧 **Email Notifications** - Registration, password reset, order confirmations
+- ⚙️ **Admin Panel** - Manage users, orders, feedback, pages, and messaging
 
-🍪 Main services website offer(modules): Food ordering (Add to cart --> checkout || Increase/decrease quantity), Table booking (Normal & vip || Book & View Bookings), Vip membership (For discount and more)
+## 📋 Tech Stack
 
-🍪 Bill printing functionality (PDF generation) [Discounted for vip & non discounted]
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** PHP
+- **Database:** MySQL
+- **Tools:** VSCode, ChatGPT
 
-🍪 Email sending functionality (During registration, forgot password, delete order by admin like events)
+## 🚀 Getting Started
 
-🍪 Admin functionality (To manage users, orders feedbacks, enabling/disabling pages, giving message etc)
+### Prerequisites
+- PHP (v7.0+)
+- MySQL Database
+- phpMyAdmin
 
-Screenshot
-This is a web template that I have created and made available for private use. Please note the licensing terms before using this template.
+### Database Setup
 
-License
-This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+Create the database with the following structure:
 
-Usage
-You are free to download and use this template for personal projects, educational purposes, or for non-commercial use. However, any public or commercial use, including publishing, marketing, or using it in a commercial project, is not permitted without explicit permission.
-
-Adaptations
-If you choose to adapt this template for your own needs, you must share your adaptations under the same Creative Commons Attribution-NonCommercial 4.0 International License. This ensures that others can benefit from your modifications while respecting the original creator's intentions.
-
-Please read the full license text at http://creativecommons.org/licenses/by-nc/4.0/ for more details.
-
-How to run
-Create a database, tables, and columns with the following details using phpMyAdmin (Detailed structure and query given below this box):
-
-Database name: zestia_db
-
-Table names:
-
-admin
-
-Column names: id, email, name, password, resettoken, resettokenexpire, enable_table_booking, enable_menu_page
-
-admin_message
-
-Column names: id, message, enable_meessage
-
-contact
-
-Column names: id, email, timestamp
-
-feedback
-
-Column names: feedback_id, user_email, feedback_text, timestamp
-
-lend_hand
-
-Column names: id, name, email, amount, timestamp, show_detail
-
-menu_items
-
-Column names: id, name, description, category, price, quantity, available, image_path
-
-orders
-
-Column names: order_id, name, email, address, item, quantity, total_price, timestamp
-
-registered_users
-
-Column names: name, email, password, gender, state, district, verification_code, is_verified, resettoken, resettokenexpire, is_vip
-
-table_booking_ground
-
-Column names: id, name, email, section, seat, date, time, payment
-
-table_booking_vip
-
-Column names: id, name, email, section, seat, decor, date, time, payment
-
-Database Structure & Creating Queries [Table By Table]
-Database name: zestia_db
-
-SQL
+```sql
 CREATE DATABASE zestia_db;
-Table structure for table admin
+```
 
+#### 1. Admin Table
+```sql
 CREATE TABLE admin (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY,
     email VARCHAR(50) NOT NULL,
     name VARCHAR(100) NOT NULL,
     password VARCHAR(190) NOT NULL,
@@ -94,50 +48,66 @@ CREATE TABLE admin (
     enable_table_booking TINYINT NOT NULL,
     enable_menu_page TINYINT NOT NULL
 );
-Table structure for table admin_message
+```
 
+#### 2. Admin Messages Table
+```sql
 CREATE TABLE admin_message (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY,
     message VARCHAR(5000) NOT NULL,
     enable_message TINYINT NOT NULL
 );
-Table structure for table contact
+```
+
+#### 3. Contact Table
+```sql
 CREATE TABLE contact (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(90) NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-Table structure for table feedback
+```
+
+#### 4. Feedback Table
+```sql
 CREATE TABLE feedback (
-    feedback_id INT NOT NULL,
+    feedback_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_email VARCHAR(255) NOT NULL,
     feedback_text TEXT NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-Table structure for table lend_hand
+```
+
+#### 5. Lend Hand Table
+```sql
 CREATE TABLE lend_hand (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(90) NOT NULL,
     amount INT NOT NULL,
     timestamp TIMESTAMP NOT NULL,
     show_detail TINYINT NOT NULL
 );
-Table structure for table menu_items
+```
+
+#### 6. Menu Items Table
+```sql
 CREATE TABLE menu_items (
-    id int NOT NULL AUTO_INCREMENT,
-    name varchar(255) NOT NULL,
-    description text,
-    category varchar(50),
-    price decimal(10,2) NOT NULL,
-    quantity int NOT NULL DEFAULT 0,
-    available tinyint(1) NOT NULL DEFAULT 1,
-    image_path varchar(255),
-    PRIMARY KEY (id)
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    category VARCHAR(50),
+    price DECIMAL(10,2) NOT NULL,
+    quantity INT NOT NULL DEFAULT 0,
+    available TINYINT(1) NOT NULL DEFAULT 1,
+    image_path VARCHAR(255)
 );
-Table structure for table orders
+```
+
+#### 7. Orders Table
+```sql
 CREATE TABLE orders (
-    order_id INT NOT NULL,
+    order_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL,
     address VARCHAR(200) NOT NULL,
@@ -146,10 +116,13 @@ CREATE TABLE orders (
     total_price VARCHAR(30) NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-Table structure for table registered_users
+```
+
+#### 8. Registered Users Table
+```sql
 CREATE TABLE registered_users (
+    email VARCHAR(30) NOT NULL PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    email VARCHAR(30) NOT NULL,
     password VARCHAR(100) NOT NULL,
     gender VARCHAR(18) NOT NULL,
     state VARCHAR(30) NOT NULL,
@@ -158,11 +131,14 @@ CREATE TABLE registered_users (
     is_verified INT NOT NULL DEFAULT 0,
     resettoken VARCHAR(255) DEFAULT NULL,
     resettokenexpire DATE DEFAULT NULL,
-    is_vip TINYINT NOT NULL
+    is_vip TINYINT NOT NULL DEFAULT 0
 );
-Table structure for table table_booking_ground
+```
+
+#### 9. Table Booking (Ground) Table
+```sql
 CREATE TABLE table_booking_ground (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
     email VARCHAR(50) NOT NULL,
     section VARCHAR(30) NOT NULL,
@@ -171,9 +147,12 @@ CREATE TABLE table_booking_ground (
     time VARCHAR(50) NOT NULL,
     payment TINYINT NOT NULL
 );
-Table structure for table table_booking_vip
+```
+
+#### 10. Table Booking (VIP) Table
+```sql
 CREATE TABLE table_booking_vip (
-    id INT NOT NULL,
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
     section VARCHAR(30) NOT NULL,
@@ -183,15 +162,47 @@ CREATE TABLE table_booking_vip (
     time VARCHAR(20) NOT NULL,
     payment TINYINT NOT NULL
 );
-Technologies Used
-Don't just copy, hit the star also 😊
-Zestia - The website for restaurant
-This includes front-end design and back-end code for a restaurant-based website.
+```
 
-This pack comes under the Creative Commons Attribution-NonCommercial license (CC BY-NC).
-~Work by Vivek Gautam
-©Vivek Gautam    Reach me at GitHub
+### Installation
 
-~Work by Vivek Gautam
+1. Clone the repository
+2. Create the database and tables using the SQL queries above
+3. Update database credentials in your PHP configuration
+4. Upload files to your web server
+5. Access the application through your browser
 
-©Vivek Gautam    Reach me at GitHub
+## 📄 License
+
+This work is licensed under the [Creative Commons Attribution-NonCommercial 4.0 International License](http://creativecommons.org/licenses/by-nc/4.0/).
+
+![Creative Commons License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)
+
+### Usage Rights
+
+✅ **You may:**
+- Download and use for personal projects
+- Use for educational purposes
+- Use for non-commercial websites
+
+❌ **You cannot:**
+- Use for commercial purposes
+- Publish without attribution
+- Use for commercial marketing
+
+### Modifications
+
+If you adapt this template, you must share your modifications under the same CC BY-NC 4.0 license.
+
+For the full license details, visit: [creativecommons.org/licenses/by-nc/4.0/](http://creativecommons.org/licenses/by-nc/4.0/)
+
+---
+
+## 👨‍💻 About
+
+**Zestia** - A complete restaurant website solution with front-end design and back-end functionality.
+
+Created by **Vivek Gautam**  
+[GitHub Profile](https://github.com/Kratos3213)
+
+⭐ **Don't forget to star this repository!** ⭐
