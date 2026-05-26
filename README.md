@@ -84,7 +84,6 @@ SQL
 CREATE DATABASE zestia_db;
 Table structure for table admin
 
-SQL
 CREATE TABLE admin (
     id INT NOT NULL,
     email VARCHAR(50) NOT NULL,
@@ -97,23 +96,18 @@ CREATE TABLE admin (
 );
 Table structure for table admin_message
 
-SQL
 CREATE TABLE admin_message (
     id INT NOT NULL,
     message VARCHAR(5000) NOT NULL,
     enable_message TINYINT NOT NULL
 );
 Table structure for table contact
-
-SQL
 CREATE TABLE contact (
     id INT NOT NULL,
     email VARCHAR(90) NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 Table structure for table feedback
-
-SQL
 CREATE TABLE feedback (
     feedback_id INT NOT NULL,
     user_email VARCHAR(255) NOT NULL,
@@ -121,8 +115,6 @@ CREATE TABLE feedback (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 Table structure for table lend_hand
-
-SQL
 CREATE TABLE lend_hand (
     id INT NOT NULL,
     name VARCHAR(50) NOT NULL,
@@ -132,8 +124,6 @@ CREATE TABLE lend_hand (
     show_detail TINYINT NOT NULL
 );
 Table structure for table menu_items
-
-SQL
 CREATE TABLE menu_items (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
@@ -146,8 +136,6 @@ CREATE TABLE menu_items (
     PRIMARY KEY (id)
 );
 Table structure for table orders
-
-SQL
 CREATE TABLE orders (
     order_id INT NOT NULL,
     name VARCHAR(50) NOT NULL,
@@ -159,8 +147,6 @@ CREATE TABLE orders (
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 Table structure for table registered_users
-
-SQL
 CREATE TABLE registered_users (
     name VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
@@ -175,8 +161,6 @@ CREATE TABLE registered_users (
     is_vip TINYINT NOT NULL
 );
 Table structure for table table_booking_ground
-
-SQL
 CREATE TABLE table_booking_ground (
     id INT NOT NULL,
     name VARCHAR(30) NOT NULL,
@@ -188,8 +172,6 @@ CREATE TABLE table_booking_ground (
     payment TINYINT NOT NULL
 );
 Table structure for table table_booking_vip
-
-SQL
 CREATE TABLE table_booking_vip (
     id INT NOT NULL,
     name VARCHAR(30) NOT NULL,
